@@ -2,10 +2,20 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
+gem 'jquery-rails'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+# PostgreSQL database is for production.
+group :production, :staging do
+  gem "pg"
+end
+
+# SQLite3 database is for development and testing.
+group :development, :test do
+  gem "sqlite3-ruby", "~> 1.3.0", :require => "sqlite3"
+end
 
 
 # Gems used only for assets and not required
@@ -20,7 +30,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
